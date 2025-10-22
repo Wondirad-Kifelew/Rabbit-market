@@ -10,4 +10,7 @@ backend/node_modules/
 frontend/.env
 backend/.env
 
+#test file
+backend/test.rest
+
 .DS_Store
