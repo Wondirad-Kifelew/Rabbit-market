@@ -10,7 +10,6 @@ const { protected } = require("../middleware/authMiddleware");
 
 router.post("/register", async (req, res) => {
   const { name, email, password } = req.body;
-  console.log("In handler", name, email, password);
   try {
     // reg logic
     let user = await User.findOne({ email });

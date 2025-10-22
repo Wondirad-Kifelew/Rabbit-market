@@ -7,7 +7,7 @@ import {
   FaUser,
 } from "react-icons/fa";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import axiosInstance from "../../axiosInstance";
+import axiosInstance from "../../utils/axiosInstance";
 import { AppContext } from "../../context/AppContextHelper";
 
 const AdminSideBar = () => {
@@ -15,10 +15,8 @@ const AdminSideBar = () => {
   const navigate = useNavigate();
   const handleLogout = async () => {
     try {
-      const response = await axiosInstance.post("/api/users/logout");
-      console.log("response for logout: ", response);
+      await axiosInstance.post("/api/users/logout");
       setUser(null);
-      localStorage.removeItem("userInfo");
       navigate("/");
     } catch (error) {
       console.log("Error Logging out: ", error);

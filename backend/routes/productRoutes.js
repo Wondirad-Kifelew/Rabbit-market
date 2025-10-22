@@ -90,7 +90,6 @@ router.put("/:id", protected, adminOnly, async (req, res) => {
       weight,
       sku,
     } = req.body;
-    console.log("request body ", req.body);
     // find the product using the id in the url
 
     const products = await Product.findById(req.params.id);

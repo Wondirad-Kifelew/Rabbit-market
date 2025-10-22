@@ -95,7 +95,6 @@ router.put("/", async (req, res) => {
     let cart = await getCart(userId, guestId);
 
     if (!cart) return res.status(404).json({ message: "Cart not found" });
-    console.log("from req", productId, size, color);
     const productIndex = cart.products.findIndex(
       (p) =>
         p.productId.toString() === productId &&
@@ -142,7 +141,6 @@ router.delete("/", async (req, res) => {
         p.size === size &&
         p.color === color
     );
-    // console.log("prod to del: ", Number(cart.products[productIndex].price));
     if (productIndex > -1) {
       cart.totalPrice =
         cart.totalPrice -

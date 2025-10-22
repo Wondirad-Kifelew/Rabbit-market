@@ -29,7 +29,6 @@ router.post("/", protected, async (req, res) => {
       paymentStatus: "Pending",
       isPaid: false,
     });
-    console.log(`checkout created for user ${req.user._id}`);
     res.status(201).json(newCheckout);
   } catch (error) {
     console.error("Error creating checkout session: ", error);

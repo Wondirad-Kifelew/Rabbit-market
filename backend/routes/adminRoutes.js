@@ -52,7 +52,6 @@ router.post("/", protected, adminOnly, async (req, res) => {
 
 router.put("/:id", protected, adminOnly, async (req, res) => {
   const { name, email, role } = req.body;
-  console.log("role: ", role, name, email);
   try {
     const user = await User.findById(req.params.id);
     if (!user) {

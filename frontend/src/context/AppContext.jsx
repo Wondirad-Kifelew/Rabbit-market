@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-// import { useNavigate } from "react-router-dom";
-import axiosInstance from "../axiosInstance";
+import axiosInstance from "../utils/axiosInstance";
 
 import { AppContext } from "./AppContextHelper";
 import { useSearchParams } from "react-router-dom";
@@ -17,8 +16,8 @@ export const AppContextProvider = (props) => {
   const [haveFilter, setHaveFilter] = useState(false);
 
   const [loading, setLoading] = useState(true);
-  // fetch cart using userId or guestId
 
+  // fetch cart using userId or guestId
   const fetchCart = async ({ user, guestId }) => {
     try {
       const params = user ? { userId: user._id } : { guestId };
@@ -37,7 +36,6 @@ export const AppContextProvider = (props) => {
         const res = await axiosInstance.get("/api/users/profile");
         if (res) {
           setUser(res.data);
-          localStorage.setItem("userInfo", JSON.stringify(res.data));
         }
       } catch (error) {
         if (error.response && error.response.status === 401) {
@@ -96,10 +94,6 @@ export const AppContextProvider = (props) => {
       setHaveFilter(products.length !== filteredProducts.length);
     }
   }, [products, filteredProducts]);
-
-  console.log("cart in context file: ", cart);
-  // console.log("products in context file: ", filteredProducts);
-  // console.log("user: ", user, "guestId: ", guestId, cart, setCart);
 
   const value = {
     user,
