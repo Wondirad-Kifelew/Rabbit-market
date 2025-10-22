@@ -1,0 +1,266 @@
+@cookieJar
+
+###
+post http://localhost:9000/api/users/register
+Content-Type: application/json
+
+{
+    "name": "al", "email": "al@gmail.com", "password": "234234234"
+}
+
+###Login
+post http://localhost:9000/api/users/login
+Content-Type: application/json
+
+{
+"email": "amu@gmail.com","password": "password" 
+}
+
+# how should i test token sent through cookie
+###profile(protected route)
+get http://localhost:9000/api/users/profile
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjhkZTVlYjY3MzA3MTNkZjE5ODlkZmUyIiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTc1OTk0NjMzNywiZXhwIjoxNzYwMDMyNzM3fQ.CjvhD4oGd4a8hnX00LTvgcNGjSxoN0LZvehmpuk2AXw
+
+###products
+post http://localhost:9000/api/products
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjhkYzBhMTdkMzMwN2ZlMDcyODZiYWM3Iiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTc1OTI1MDk5NywiZXhwIjoxNzU5MzM3Mzk3fQ.WSrH_P90lzGxiIeQxY4BTNCs1owldQbpddockeawlQ4
+
+
+{
+  "name": "Classic Leather Jacket",
+  "description": "A stylish genuine leather jacket perfect for all seasons.",
+  "price": 199.99,
+  "discountPrice": 159.99,
+  "countInStock": 25,
+  "sku": "LJ-001",
+  "category": "Jackets",
+  "brand": "UrbanStyle",
+  "sizes": ["S", "M", "L", "XL"],
+  "colors": ["Black", "Brown"],
+  "collections": "Winter 2025",
+  "material": "Leather",
+  "gender": "Men",
+  "images": [
+    {
+      "url": "https://example.com/images/jacket1.jpg",
+      "altText": "Front view of leather jacket"
+    },
+    {
+      "url": "https://example.com/images/jacket2.jpg",
+      "altText": "Back view of leather jacket"
+    }
+  ],
+  "isFeatured": true,
+  "isPublished": true,
+  "rating": 4.5,
+  "numReviews": 32,
+  "tags": ["leather", "jacket", "winter", "fashion"],
+  "user": "651fa2d7c7a8f12d34e8b9ab",
+  "metaTitle": "Men’s Classic Leather Jacket - UrbanStyle",
+  "metaDescription": "Shop the latest men’s leather jackets with durable quality and stylish design.",
+  "metaKeywords": "leather jacket, men’s fashion, urbanstyle, winter wear",
+  "dimensions": {
+    "length": 70,
+    "width": 55,
+    "height": 5
+  },
+  "weight": 1.2
+}
+
+
+###update product
+put http://localhost:9000/api/products/68dbb125a9d8d262299ba3e8
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjhkYmE3N2U1Y2M1ZDc3NGE4NjQzNWE4Iiwicm9sZSI6ImN1c3RvbWVyIn0sImlhdCI6MTc1OTIyNTczOSwiZXhwIjoxNzU5MzEyMTM5fQ.e2Je0HuIT29QsgpMDQgldQgWFlmyjghUu7xGvheyWP0
+
+
+{"sizes": ["S", "M", "L"]}
+
+###delete prod by id
+delete http://localhost:9000/api/products/68dbb125a9d8d262299ba3e8
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjhkYmE3N2U1Y2M1ZDc3NGE4NjQzNWE4Iiwicm9sZSI6ImN1c3RvbWVyIn0sImlhdCI6MTc1OTIyNTczOSwiZXhwIjoxNzU5MzEyMTM5fQ.e2Je0HuIT29QsgpMDQgldQgWFlmyjghUu7xGvheyWP0
+
+
+###get products and filter
+get http://localhost:9000/api/products/?category=Top Wear&material=Cotton&gender=Women&search=shirt&sortBy=priceDesc&minPrice=30
+
+
+###get a specific product
+get http://localhost:9000/api/products/68dc0b7f752d88b80cdde508i
+
+
+###get similar products 
+get http://localhost:9000/api/products/similar/68dc0b7f752d88b80cdde507
+
+
+### best seller
+get http://localhost:9000/api/products/best-seller
+
+### new arrivals (8)
+get http://localhost:9000/api/products/new-arrivals
+
+
+### adding product to cart
+post http://localhost:9000/api/carts
+Content-Type: application/json
+
+{
+
+  "productId": "68de5a852fbd49463bb690bc",
+  "size" : "M",
+  "color" : "Red",
+  "quantity": 90
+}
+
+### updating cart quantity
+put http://localhost:9000/api/carts
+Content-Type: application/json
+
+{
+  "userId" : "68dc0b7f752d88b80cdde505",
+  "productId": "68dc0b7f752d88b80cdde50a",
+  "size" : "M",
+  "color" : "Red",
+  "quantity": 0
+}
+
+### delete a cart
+delete http://localhost:9000/api/carts
+Content-Type: application/json
+
+{
+  "userId" : "68dc0b7f752d88b80cdde505",
+  "productId": "68dc0b7f752d88b80cdde50a",
+  "size" : "M",
+  "color" : "Red",
+  "quantity": 90
+}
+
+### get cart details
+get http://localhost:9000/api/carts?userId=68e14511b63f532861905953
+
+
+### merge guest card and user card
+post  http://localhost:9000/api/carts/merge
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjhkZTVlYjY3MzA3MTNkZjE5ODlkZmUyIiwicm9sZSI6ImN1c3RvbWVyIn0sImlhdCI6MTc1OTQwMzgyMCwiZXhwIjoxNzU5NDkwMjIwfQ.bGBgyobIrVRgQpJVYZrMMskHNu-GBpNQngaee6FeDnw
+
+{"guestId": "guest_1759403453136"}
+
+
+### checkout
+post http://localhost:9000/api/checkout
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjhkZTVlYjY3MzA3MTNkZjE5ODlkZmUyIiwicm9sZSI6ImN1c3RvbWVyIn0sImlhdCI6MTc1OTQ2NjEyMywiZXhwIjoxNzU5NTUyNTIzfQ.KSfwa_EdvwNk59VkrWMGflIQCxpG-2X9N-wTWRBD2Yc
+
+{
+  "checkoutItems":[
+    {
+      "productId": "68dc0b7f752d88b80cdde50a",
+      "name": "Classic T-shirt",
+      "image": "https://picsum.photos/seed/denim1/500/500",
+      "price" : 19,
+      "quantity": 1
+    }
+  ],
+  "shippingAddress": {
+    "address": "123 street",
+    "city": "Addis Ababa",
+    "country": "Ethiopia",
+    "postalCode": "1000"
+  },
+  "paymentMethod": "PayPal",
+  "totalPrice": "19"
+}
+
+### change payment status
+put http://localhost:9000/api/checkout/68df6cbbcb0816a92f49818e/pay
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjhkZTVlYjY3MzA3MTNkZjE5ODlkZmUyIiwicm9sZSI6ImN1c3RvbWVyIn0sImlhdCI6MTc1OTQ2NjEyMywiZXhwIjoxNzU5NTUyNTIzfQ.KSfwa_EdvwNk59VkrWMGflIQCxpG-2X9N-wTWRBD2Yc
+
+{
+  "paymentStatus": "paid",
+  "paymentDetails": {
+    "transactionId": "txn_1234",
+    "paymentGateway": "PayPal",
+    "amount": 19,
+    "currency": "USD"
+
+  }
+}
+
+###finalize 
+post http://localhost:9000/api/checkout/68df6cbbcb0816a92f49818e/finalize
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjhkZTVlYjY3MzA3MTNkZjE5ODlkZmUyIiwicm9sZSI6ImN1c3RvbWVyIn0sImlhdCI6MTc1OTQ2NjEyMywiZXhwIjoxNzU5NTUyNTIzfQ.KSfwa_EdvwNk59VkrWMGflIQCxpG-2X9N-wTWRBD2Yc
+
+### my orders 
+get http://localhost:9000/api/orders/my-orders
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjhkZTVlYjY3MzA3MTNkZjE5ODlkZmUyIiwicm9sZSI6ImN1c3RvbWVyIn0sImlhdCI6MTc1OTQ2NjEyMywiZXhwIjoxNzU5NTUyNTIzfQ.KSfwa_EdvwNk59VkrWMGflIQCxpG-2X9N-wTWRBD2Yc
+
+### get a specific order
+get http://localhost:9000/api/orders/68df62a3dd0065f1c06641f2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjhkZTVlYjY3MzA3MTNkZjE5ODlkZmUyIiwicm9sZSI6ImN1c3RvbWVyIn0sImlhdCI6MTc1OTQ2NjEyMywiZXhwIjoxNzU5NTUyNTIzfQ.KSfwa_EdvwNk59VkrWMGflIQCxpG-2X9N-wTWRBD2Yc
+
+### upload image
+post http://localhost:9000/api/upload
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjhkZTVlYjY3MzA3MTNkZjE5ODlkZmUyIiwicm9sZSI6ImN1c3RvbWVyIn0sImlhdCI6MTc1OTQ5MTExNCwiZXhwIjoxNzU5NTc3NTE0fQ.8L-DWG2fWpVXLpnkFk_Npp8n2ZQnNg4vBERuuZ2CC4I
+
+###subscriber to newsettler
+post http://localhost:9000/api/subscribe
+Content-Type: application/json
+
+{
+  "email": "alem@gmail.com"
+}
+
+###(admin only) getting users
+get http://localhost:9000/api/admin/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjhkZTVlYjY3MzA3MTNkZjE5ODlkZmUyIiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTc1OTQ5MTMwNywiZXhwIjoxNzU5NTc3NzA3fQ.h3fUDcqqbZYCB4Hx3Nnlc2MUy9tSlwSqDacYpoOTQ1g
+
+###post 
+post http://localhost:9000/api/admin/users
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjhkZTVlYjY3MzA3MTNkZjE5ODlkZmUyIiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTc1OTQ5Mjc3NSwiZXhwIjoxNzU5NTc5MTc1fQ.iebs02qwU2x3kycRXMsP6MO-qdTR_jFc5XWLGcqOIYk
+
+{
+  "name": "Suza",
+  "email": "suza@gmail.com",
+  "password": "password"
+}
+###update user info
+put http://localhost:9000/api/admin/users/68dfbefae8af39214612a798
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjhkZTVlYjY3MzA3MTNkZjE5ODlkZmUyIiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTc1OTQ5Mjc3NSwiZXhwIjoxNzU5NTc5MTc1fQ.iebs02qwU2x3kycRXMsP6MO-qdTR_jFc5XWLGcqOIYk
+
+{
+  "name": "Suza-updated",
+  "email": "suza@gmail.com",
+  "role":"admin"
+}
+
+###delete user admin only
+delete http://localhost:9000/api/admin/users/68dfbefae8af39214612a798
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjhkZTVlYjY3MzA3MTNkZjE5ODlkZmUyIiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTc1OTQ5Mjc3NSwiZXhwIjoxNzU5NTc5MTc1fQ.iebs02qwU2x3kycRXMsP6MO-qdTR_jFc5XWLGcqOIYk
+
+###get products admin
+get http://localhost:9000/api/admin/products
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjhkZTVlYjY3MzA3MTNkZjE5ODlkZmUyIiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTc1OTQ5Mjc3NSwiZXhwIjoxNzU5NTc5MTc1fQ.iebs02qwU2x3kycRXMsP6MO-qdTR_jFc5XWLGcqOIYk
+
+###get all orders
+get http://localhost:9000/api/admin/orders
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjhkZTVlYjY3MzA3MTNkZjE5ODlkZmUyIiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTc1OTQ5Mjc3NSwiZXhwIjoxNzU5NTc5MTc1fQ.iebs02qwU2x3kycRXMsP6MO-qdTR_jFc5XWLGcqOIYk
+
+###put /api/admin/orders/:id
+put http://localhost:9000/api/admin/orders/68df62a3dd0065f1c06641f2
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjhkZTVlYjY3MzA3MTNkZjE5ODlkZmUyIiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTc1OTQ5Mjc3NSwiZXhwIjoxNzU5NTc5MTc1fQ.iebs02qwU2x3kycRXMsP6MO-qdTR_jFc5XWLGcqOIYk
+
+{
+  "status": "Processing"
+}
+
+### deleting an order
+DELETE http://localhost:9000/api/admin/orders/68df62a3dd0065f1c06641f2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjhkZTVlYjY3MzA3MTNkZjE5ODlkZmUyIiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTc1OTQ5Mjc3NSwiZXhwIjoxNzU5NTc5MTc1fQ.iebs02qwU2x3kycRXMsP6MO-qdTR_jFc5XWLGcqOIYk
