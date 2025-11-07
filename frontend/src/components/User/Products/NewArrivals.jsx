@@ -108,7 +108,7 @@ const NewArrivals = () => {
           onMouseUp={handleMouseUpOrLeave}
           onMouseLeave={handleMouseUpOrLeave}
         >
-          {(newArrivals || []).map((product) => (
+          {newArrivals?.map((product) => (
             <div
               key={product._id}
               className="min-w-[100%] sm:min-w-[50%] lg:min-w-[30%] relative"

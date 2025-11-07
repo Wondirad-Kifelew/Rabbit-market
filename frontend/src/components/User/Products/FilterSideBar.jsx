@@ -120,7 +120,7 @@ const FilterSideBar = () => {
           {" "}
           Category
         </label>
-        {(categories.map || [])((category, index) => (
+        {categories?.map((category, index) => (
           <div key={index} className="flex item-center mb-1">
             <input
               type="radio"
@@ -138,7 +138,7 @@ const FilterSideBar = () => {
       {/* gender filter */}
       <div className="mb-6 ">
         <label className="block text-gray-600 font-medium mb-2"> Gender</label>
-        {(genders || []).map((gender, index) => (
+        {genders?.map((gender, index) => (
           <div key={index} className="flex item-center mb-1">
             <input
               type="radio"
@@ -157,7 +157,7 @@ const FilterSideBar = () => {
       <div className="mb-6 ">
         <label className="block text-gray-600 font-medium mb-2 ">Color</label>
         <div className="flex flex-wrap gap-2 ">
-          {(colors || []).map((color, index) => (
+          {colors?.map((color, index) => (
             <button
               key={index}
               name="color"
@@ -177,7 +177,7 @@ const FilterSideBar = () => {
       {/* Size Filter*/}
       <div className="mb-6 ">
         <label className="block text-gray-600 font-medium mb-2">Size</label>
-        {(sizes || []).map((size, index) => (
+        {sizes?.map((size, index) => (
           <div key={index} className="flex item-center mb-1">
             <input
               type="checkbox"
@@ -194,7 +194,7 @@ const FilterSideBar = () => {
       {/* Material Filter*/}
       <div className="mb-6 ">
         <label className="block text-gray-600 font-medium mb-2">Material</label>
-        {(materials || []).map((material, index) => (
+        {materials?.map((material, index) => (
           <div key={index} className="flex item-center mb-1">
             <input
               type="checkbox"
@@ -211,7 +211,7 @@ const FilterSideBar = () => {
       {/* Brands Filter*/}
       <div className="mb-6 ">
         <label className="block text-gray-600 font-medium mb-2">Brands</label>
-        {(brands || []).map((brand, index) => (
+        {brands?.map((brand, index) => (
           <div key={index} className="flex item-center mb-1">
             <input
               type="checkbox"

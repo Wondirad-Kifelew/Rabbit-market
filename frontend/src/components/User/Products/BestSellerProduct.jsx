@@ -84,7 +84,7 @@ const BestSellerProduct = () => {
           {/* left thumbnails desktop*/}
           <div className="hidden md:flex flex-col space-y-4 mr-6">
             {bestSellerProduct ? (
-              (bestSellerProduct.images || []).map((image, index) => (
+              bestSellerProduct.images?.map((image, index) => (
                 <img
                   key={index}
                   src={image.url}
@@ -112,7 +112,7 @@ const BestSellerProduct = () => {
           {/* mobile Thumbnail */}
           <div className="md:hidden flex overscroll-x-scroll space-x-4 mb-4">
             {bestSellerProduct &&
-              (bestSellerProduct.images || []).map((image, index) => (
+              bestSellerProduct.images?.map((image, index) => (
                 <img
                   key={index}
                   src={image.url}
@@ -144,7 +144,7 @@ const BestSellerProduct = () => {
               <p className="text-gray-700 ">Color: </p>
               <div className="flex gap-2 mt-2">
                 {bestSellerProduct &&
-                  (bestSellerProduct.colors || []).map((color, index) => (
+                  bestSellerProduct.colors?.map((color, index) => (
                     <button
                       key={index}
                       onClick={() => setSelectedColor(color)}
@@ -165,7 +165,7 @@ const BestSellerProduct = () => {
               <p className="text-gray-700">Size: </p>
               <div className="flex gap-2 mt-2">
                 {bestSellerProduct &&
-                  (bestSellerProduct.sizes || []).map((size, index) => (
+                  bestSellerProduct.sizes?.map((size, index) => (
                     <button
                       key={index}
                       onClick={() => setSelectedSize(size)}

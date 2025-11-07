@@ -201,7 +201,7 @@ const EditProductPage = () => {
             </p>
           )}
           <div className="flex gap-4 mt-4">
-            {(productData.images || []).map((image, index) => (
+            {productData.images?.map((image, index) => (
               <div key={index}>
                 <img
                   src={image.url}
