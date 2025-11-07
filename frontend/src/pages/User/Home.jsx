@@ -12,6 +12,7 @@ const Home = () => {
   const [products, setProducts] = useState([]);
   const [femaleProducts, setFemaleProducts] = useState([]);
 
+  // get products from context file and delete this
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -25,6 +26,7 @@ const Home = () => {
     };
     fetchProducts();
   }, []);
+
   useEffect(() => {
     if (products.length > 0) {
       setFemaleProducts(products.filter((p) => p.gender === "Women"));

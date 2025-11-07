@@ -72,7 +72,8 @@ const NavBar = () => {
                 className="bg-rabit-red text-white text-xs rounded-full 
              w-6 h-6 flex items-center justify-center font-semibold"
               >
-                {user.name.charAt(0).toUpperCase()}
+                {user?.name ? user.name.charAt(0).toUpperCase() : null}
+                {/* {user.name.charAt(0).toUpperCase()} */}
               </span>
             ) : (
               <HiOutlineUser className="h-6 w-6" />

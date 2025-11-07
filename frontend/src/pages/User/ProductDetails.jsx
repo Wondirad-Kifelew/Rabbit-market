@@ -13,9 +13,7 @@ const ProductDetails = () => {
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
   const [productDetails, setProductDetails] = useState(null);
   const [similarProducts, setSimilarProducts] = useState([]);
-
-  const { guestId, user, setCartAmount, cart, setCart } =
-    useContext(AppContext);
+  const { guestId, user, setCartAmount, setCart } = useContext(AppContext);
   const { id } = useParams();
   useEffect(() => {
     const productDetailsFetch = async () => {
@@ -34,7 +32,6 @@ const ProductDetails = () => {
           // similar products accordig to best seller
           try {
             if (product) {
-              ``;
               const res_similar = await axiosInstance.get(
                 `/api/products/similar/${product._id}`
               );
@@ -74,7 +71,7 @@ const ProductDetails = () => {
         guestId,
         userId: user?._id,
       });
-      setCart(response.data); //
+      setCart(response.data);
       toast.success("Product added to cart");
       setCartAmount(response.data.products.length);
     } catch (error) {
@@ -83,22 +80,6 @@ const ProductDetails = () => {
       setIsButtonDisabled(false);
     }
   };
-
-  // on refresh the cart should be there
-  useEffect(() => {
-    const fetchCart = async () => {
-      try {
-        const params = user ? { userId: user._id } : { guestId };
-
-        const res = await axiosInstance.get("/api/carts", { params });
-        setCart(res.data);
-      } catch (err) {
-        console.log("Error fetching cart: ", err);
-      }
-    };
-
-    fetchCart();
-  }, [user]);
   return (
     <div className="p-6">
       <div className="max-w-6xl mx-auto bg-white p-8 rounded">
@@ -130,7 +111,27 @@ const ProductDetails = () => {
                 className="w-full h-auto object-cover rounded-lg"
               />
             </div>
+            <div className="hidden md:block  mt-10 text-gray-700">
+              <h3 className="text-xl font-bold mb-4">Characterstics: </h3>
+              <table className="w-full text-left text-sm text-gray-600">
+                <tbody>
+                  <tr>
+                    <td className="py-1">Brand</td>
+                    <td className="py-1 ">
+                      {productDetails && productDetails.brand}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="py-1 ">Material</td>
+                    <td className="py-1 ">
+                      {productDetails && productDetails.material}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
+
           {/* mobile Thumbnail */}
           <div className="md:hidden flex overscroll-x-scroll space-x-4 mb-4">
             {productDetails &&
@@ -228,7 +229,7 @@ const ProductDetails = () => {
             >
               {isButtonDisabled ? "Adding..." : "ADD TO CART"}
             </button>
-            <div className="mt-10 text-gray-700">
+            <div className="mt-10 text-gray-700 md:hidden">
               <h3 className="text-xl font-bold mb-4">Characterstics: </h3>
               <table className="w-full text-left text-sm text-gray-600">
                 <tbody>

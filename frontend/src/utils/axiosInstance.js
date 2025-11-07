@@ -5,7 +5,7 @@ const api =
     : import.meta.env.VITE_BACKEND_URL_DEV;
 const axiosInstance = axios.create({
   baseURL: api,
-  withCredentials: true, //later use cookies
+  withCredentials: true, //use cookies
 });
 
 export default axiosInstance;

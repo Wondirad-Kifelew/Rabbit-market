@@ -100,7 +100,7 @@ const BestSellerProduct = () => {
             )}
           </div>
           {/* Main Image */}
-          <div className="md:w-1/2 ">
+          <div className="md:w-1/2">
             <div className="mb-4 ">
               <img
                 src={mainImage ? mainImage : null}
@@ -206,25 +206,6 @@ const BestSellerProduct = () => {
             >
               {isButtonDisabled ? "Adding..." : "ADD TO CART"}
             </button>
-            <div className="mt-10 text-gray-700">
-              <h3 className="text-xl font-bold mb-4">Characterstics: </h3>
-              <table className="w-full text-left text-sm text-gray-600">
-                <tbody>
-                  <tr>
-                    <td className="py-1">Brand</td>
-                    <td className="py-1 ">
-                      {bestSellerProduct && bestSellerProduct.brand}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="py-1 ">Material</td>
-                    <td className="py-1 ">
-                      {bestSellerProduct && bestSellerProduct.material}
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
           </div>
         </div>
         <div className="mt-20 ">

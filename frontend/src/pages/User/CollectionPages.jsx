@@ -19,7 +19,7 @@ const CollectionPages = () => {
   const handleClickOutside = (e) => {
     // close sidebar if its clicked outside
     if (sideBarRef.current && !sideBarRef.current.contains(e.target)) {
-      setIsSideBarOpen(false);
+      toggleSideBarMenu();
     }
   };
   useEffect(() => {

@@ -47,10 +47,6 @@ const CartContents = () => {
       console.log("Error deleting cart: ", error);
     }
   };
-  // useEffect(() => {
-  //   if (loading) return;
-  //   setCartProducts(cart.products);
-  // }, [cart]);
 
   return (
     <div>
