@@ -9,7 +9,7 @@ const CartContents = () => {
 
   const handleQuantityChange = (value, prodId, size, color) => {
     setCart((prevCart) => {
-      const updatedProducts = prevCart.products.map((p) => {
+      const updatedProducts = (prevCart.products || []).map((p) => {
         if (p.productId === prodId && p.size === size && p.color === color) {
           const newQuantity =
             value === "plus" ? p.quantity + 1 : Math.max(1, p.quantity - 1);

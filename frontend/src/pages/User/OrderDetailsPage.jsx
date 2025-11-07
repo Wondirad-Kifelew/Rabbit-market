@@ -87,7 +87,7 @@ const OrderDetailsPage = () => {
               </thead>
 
               <tbody>
-                {orderDetails.orderItems.map((item, index) => (
+                {(orderDetails.orderItems || []).map((item, index) => (
                   <tr key={index} className=" border-b ">
                     <td className="py-2 px-4 flex item-center">
                       <img

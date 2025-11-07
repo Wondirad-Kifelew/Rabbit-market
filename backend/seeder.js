@@ -29,7 +29,7 @@ const seedData = async () => {
 
     // assign the user id to each product
     const userId = createdUser._id;
-    const updatedProducts = products.map((product, i) => {
+    const updatedProducts = (products || []).map((product, i) => {
       return { ...product, user: userId };
     });
 
