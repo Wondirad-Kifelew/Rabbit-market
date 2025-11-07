@@ -87,6 +87,7 @@ const ProductDetails = () => {
           {/* left thumbnails desktop*/}
           <div className="hidden md:flex flex-col space-y-4 mr-6">
             {productDetails ? (
+              Array.isArray(productDetails.images) &&
               productDetails.images.map((image, index) => (
                 <img
                   key={index}
@@ -135,6 +136,7 @@ const ProductDetails = () => {
           {/* mobile Thumbnail */}
           <div className="md:hidden flex overscroll-x-scroll space-x-4 mb-4">
             {productDetails &&
+              Array.isArray(productDetails.images) &&
               productDetails.images.map((image, index) => (
                 <img
                   key={index}
@@ -167,6 +169,7 @@ const ProductDetails = () => {
               <p className="text-gray-700 ">Color: </p>
               <div className="flex gap-2 mt-2">
                 {productDetails &&
+                  Array.isArray(productDetails.colors) &&
                   productDetails.colors.map((color, index) => (
                     <button
                       key={index}
@@ -188,6 +191,7 @@ const ProductDetails = () => {
               <p className="text-gray-700">Size: </p>
               <div className="flex gap-2 mt-2">
                 {productDetails &&
+                  Array.isArray(productDetails.sizes) &&
                   productDetails.sizes.map((size, index) => (
                     <button
                       key={index}

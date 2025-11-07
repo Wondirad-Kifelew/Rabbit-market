@@ -87,28 +87,29 @@ const OrderDetailsPage = () => {
               </thead>
 
               <tbody>
-                {orderDetails.orderItems?.map((item, index) => (
-                  <tr key={index} className=" border-b ">
-                    <td className="py-2 px-4 flex item-center">
-                      <img
-                        src={item.image}
-                        alt={item.name}
-                        className="w-12 h-12 object-cover rounded-lg mr-4"
-                      />
-                      <Link
-                        to={`/product/${item.productId}`}
-                        className="text-blue-500 hover:underline"
-                      >
-                        {item.name}
-                      </Link>
-                    </td>
-                    <td className="py-2 px-4 text-center">${item.price}</td>
-                    <td className="py-2 px-4 text-center">{item.quantity}</td>
-                    <td className="py-2 px-4 text-center">
-                      ${item.price * item.quantity}
-                    </td>
-                  </tr>
-                ))}
+                {Array.isArray(orderDetails.orderItems) &&
+                  orderDetails.orderItems?.map((item, index) => (
+                    <tr key={index} className=" border-b ">
+                      <td className="py-2 px-4 flex item-center">
+                        <img
+                          src={item.image}
+                          alt={item.name}
+                          className="w-12 h-12 object-cover rounded-lg mr-4"
+                        />
+                        <Link
+                          to={`/product/${item.productId}`}
+                          className="text-blue-500 hover:underline"
+                        >
+                          {item.name}
+                        </Link>
+                      </td>
+                      <td className="py-2 px-4 text-center">${item.price}</td>
+                      <td className="py-2 px-4 text-center">{item.quantity}</td>
+                      <td className="py-2 px-4 text-center">
+                        ${item.price * item.quantity}
+                      </td>
+                    </tr>
+                  ))}
               </tbody>
             </table>
           </div>

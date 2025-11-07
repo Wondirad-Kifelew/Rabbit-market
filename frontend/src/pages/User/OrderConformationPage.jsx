@@ -59,30 +59,33 @@ const OrderConformationPage = () => {
           {/* Ordered Items */}
           <div className="pt-3 mb-20">
             {/* order items */}
-            {order?.orderItems?.map((item, index) => (
-              <div
-                key={index}
-                className="flex justify-between items-start mb-4"
-              >
-                <div className="flex items-start">
-                  <img
-                    src={item.image}
-                    alt={item.name}
-                    className="mr-4 w-16 h-16 object-cover rounded-md"
-                  />
-                  <div>
-                    <h4 className="text-md font-semibold">{item.name}</h4>
-                    <p className="text-gray-500 text-sm">
-                      Size: {item.size} | Color: {item.color}
+            {Array.isArray(order?.orderItems) &&
+              order?.orderItems?.map((item, index) => (
+                <div
+                  key={index}
+                  className="flex justify-between items-start mb-4"
+                >
+                  <div className="flex items-start">
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      className="mr-4 w-16 h-16 object-cover rounded-md"
+                    />
+                    <div>
+                      <h4 className="text-md font-semibold">{item.name}</h4>
+                      <p className="text-gray-500 text-sm">
+                        Size: {item.size} | Color: {item.color}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex flex-col text-right ">
+                    <h3 className="text-md">${item.price}</h3>
+                    <p className="text-gray-500 text-sm ">
+                      Qty: {item.quantity}
                     </p>
                   </div>
                 </div>
-                <div className="flex flex-col text-right ">
-                  <h3 className="text-md">${item.price}</h3>
-                  <p className="text-gray-500 text-sm ">Qty: {item.quantity}</p>
-                </div>
-              </div>
-            ))}
+              ))}
             {/* Payment and delivery info */}
             <div className="grid grid-cols-2 gap-8">
               {/* payment info */}

@@ -47,6 +47,7 @@ const ProductManagement = () => {
           </thead>
           <tbody>
             {products.length > 0 ? (
+              Array.isArray(products) &&
               products.map((product, index) => (
                 <tr
                   key={index}

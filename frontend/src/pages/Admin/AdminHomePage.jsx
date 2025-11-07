@@ -81,6 +81,7 @@ const AdminHomePage = () => {
             </thead>
             <tbody>
               {orders.length > 0 ? (
+                Array.isArray(orders) &&
                 orders.map((order, index) => (
                   <tr
                     key={index}

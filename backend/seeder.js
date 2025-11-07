@@ -29,9 +29,11 @@ const seedData = async () => {
 
     // assign the user id to each product
     const userId = createdUser._id;
-    const updatedProducts = products?.map((product, i) => {
-      return { ...product, user: userId };
-    });
+    const updatedProducts = Array.isArray(products)
+      ? products?.map((product, i) => {
+          return { ...product, user: userId };
+        })
+      : null;
 
     // insert to the db
     await Product.insertMany(updatedProducts);

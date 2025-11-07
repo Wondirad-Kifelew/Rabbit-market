@@ -201,15 +201,16 @@ const EditProductPage = () => {
             </p>
           )}
           <div className="flex gap-4 mt-4">
-            {productData.images?.map((image, index) => (
-              <div key={index}>
-                <img
-                  src={image.url}
-                  alt="product images"
-                  className="w-20 h-20 object-cover rounded-md shadow-md"
-                />
-              </div>
-            ))}
+            {Array.isArray(productData.images) &&
+              productData.images?.map((image, index) => (
+                <div key={index}>
+                  <img
+                    src={image.url}
+                    alt="product images"
+                    className="w-20 h-20 object-cover rounded-md shadow-md"
+                  />
+                </div>
+              ))}
           </div>
         </div>
         <button

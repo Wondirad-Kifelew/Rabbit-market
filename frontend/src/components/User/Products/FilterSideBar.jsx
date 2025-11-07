@@ -120,110 +120,116 @@ const FilterSideBar = () => {
           {" "}
           Category
         </label>
-        {categories?.map((category, index) => (
-          <div key={index} className="flex item-center mb-1">
-            <input
-              type="radio"
-              name="category"
-              value={category}
-              onChange={handleFilterChange}
-              checked={filters.category === category}
-              className="mr-2 h-4 w-4 text-blue-500
+        {Array.isArray(categories) &&
+          categories?.map((category, index) => (
+            <div key={index} className="flex item-center mb-1">
+              <input
+                type="radio"
+                name="category"
+                value={category}
+                onChange={handleFilterChange}
+                checked={filters.category === category}
+                className="mr-2 h-4 w-4 text-blue-500
             focus:ring-blue-400 border-gray-300"
-            />
-            <span className="text-gray-700">{category}</span>
-          </div>
-        ))}
+              />
+              <span className="text-gray-700">{category}</span>
+            </div>
+          ))}
       </div>
       {/* gender filter */}
       <div className="mb-6 ">
         <label className="block text-gray-600 font-medium mb-2"> Gender</label>
-        {genders?.map((gender, index) => (
-          <div key={index} className="flex item-center mb-1">
-            <input
-              type="radio"
-              name="gender"
-              value={gender}
-              onChange={handleFilterChange}
-              checked={filters.gender === gender}
-              className="mr-2 h-4 w-4 text-blue-500
+        {Array.isArray(genders) &&
+          genders?.map((gender, index) => (
+            <div key={index} className="flex item-center mb-1">
+              <input
+                type="radio"
+                name="gender"
+                value={gender}
+                onChange={handleFilterChange}
+                checked={filters.gender === gender}
+                className="mr-2 h-4 w-4 text-blue-500
             focus:ring-blue-400 border-gray-300"
-            />
-            <span className="text-gray-700">{gender}</span>
-          </div>
-        ))}
+              />
+              <span className="text-gray-700">{gender}</span>
+            </div>
+          ))}
       </div>
       {/* Color filter */}
       <div className="mb-6 ">
         <label className="block text-gray-600 font-medium mb-2 ">Color</label>
         <div className="flex flex-wrap gap-2 ">
-          {colors?.map((color, index) => (
-            <button
-              key={index}
-              name="color"
-              value={color}
-              onClick={handleFilterChange}
-              className={`w-8 h-8 rounded-full border border-gray-300
+          {Array.isArray(colors) &&
+            colors?.map((color, index) => (
+              <button
+                key={index}
+                name="color"
+                value={color}
+                onClick={handleFilterChange}
+                className={`w-8 h-8 rounded-full border border-gray-300
                 cursor-pointer transition hover:scale-105 ${
                   filters.color === color ? "ring-2 ring-blue-500" : ""
                 }`}
-              style={{ backgroundColor: color.toLocaleLowerCase() }}
-            >
-              {" "}
-            </button>
-          ))}
+                style={{ backgroundColor: color.toLocaleLowerCase() }}
+              >
+                {" "}
+              </button>
+            ))}
         </div>
       </div>
       {/* Size Filter*/}
       <div className="mb-6 ">
         <label className="block text-gray-600 font-medium mb-2">Size</label>
-        {sizes?.map((size, index) => (
-          <div key={index} className="flex item-center mb-1">
-            <input
-              type="checkbox"
-              name="size"
-              value={size}
-              onChange={handleFilterChange}
-              checked={filters.size.includes(size)}
-              className="mr-2 h-4 w-4 text-blue-500 focus:ring-blue-400 border-gray-300"
-            />
-            <span className="text-gray-700">{size}</span>
-          </div>
-        ))}
+        {Array.isArray(sizes) &&
+          sizes?.map((size, index) => (
+            <div key={index} className="flex item-center mb-1">
+              <input
+                type="checkbox"
+                name="size"
+                value={size}
+                onChange={handleFilterChange}
+                checked={filters.size.includes(size)}
+                className="mr-2 h-4 w-4 text-blue-500 focus:ring-blue-400 border-gray-300"
+              />
+              <span className="text-gray-700">{size}</span>
+            </div>
+          ))}
       </div>
       {/* Material Filter*/}
       <div className="mb-6 ">
         <label className="block text-gray-600 font-medium mb-2">Material</label>
-        {materials?.map((material, index) => (
-          <div key={index} className="flex item-center mb-1">
-            <input
-              type="checkbox"
-              name="material"
-              value={material}
-              onChange={handleFilterChange}
-              checked={filters.material.includes(material)}
-              className="mr-2 h-4 w-4 text-blue-500 focus:ring-blue-400 border-gray-300"
-            />
-            <span className="text-gray-700">{material}</span>
-          </div>
-        ))}
+        {Array.isArray(materials) &&
+          materials?.map((material, index) => (
+            <div key={index} className="flex item-center mb-1">
+              <input
+                type="checkbox"
+                name="material"
+                value={material}
+                onChange={handleFilterChange}
+                checked={filters.material.includes(material)}
+                className="mr-2 h-4 w-4 text-blue-500 focus:ring-blue-400 border-gray-300"
+              />
+              <span className="text-gray-700">{material}</span>
+            </div>
+          ))}
       </div>
       {/* Brands Filter*/}
       <div className="mb-6 ">
         <label className="block text-gray-600 font-medium mb-2">Brands</label>
-        {brands?.map((brand, index) => (
-          <div key={index} className="flex item-center mb-1">
-            <input
-              type="checkbox"
-              name="brand"
-              value={brand}
-              onChange={handleFilterChange}
-              checked={filters.brand.includes(brand)}
-              className="mr-2 h-4 w-4 text-blue-500 focus:ring-blue-400 border-gray-300"
-            />
-            <span className="text-gray-700">{brand}</span>
-          </div>
-        ))}
+        {Array.isArray(brands) &&
+          brands?.map((brand, index) => (
+            <div key={index} className="flex item-center mb-1">
+              <input
+                type="checkbox"
+                name="brand"
+                value={brand}
+                onChange={handleFilterChange}
+                checked={filters.brand.includes(brand)}
+                className="mr-2 h-4 w-4 text-blue-500 focus:ring-blue-400 border-gray-300"
+              />
+              <span className="text-gray-700">{brand}</span>
+            </div>
+          ))}
       </div>
       {/* Price rannge filter */}
       <div className="mb-8">

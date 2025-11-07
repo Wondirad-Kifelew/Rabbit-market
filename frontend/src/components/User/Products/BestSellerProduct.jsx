@@ -84,6 +84,7 @@ const BestSellerProduct = () => {
           {/* left thumbnails desktop*/}
           <div className="hidden md:flex flex-col space-y-4 mr-6">
             {bestSellerProduct ? (
+              Array.isArray(bestSellerProduct.images) &&
               bestSellerProduct.images?.map((image, index) => (
                 <img
                   key={index}
@@ -112,6 +113,7 @@ const BestSellerProduct = () => {
           {/* mobile Thumbnail */}
           <div className="md:hidden flex overscroll-x-scroll space-x-4 mb-4">
             {bestSellerProduct &&
+              Array.isArray(bestSellerProduct.images) &&
               bestSellerProduct.images?.map((image, index) => (
                 <img
                   key={index}
@@ -144,6 +146,7 @@ const BestSellerProduct = () => {
               <p className="text-gray-700 ">Color: </p>
               <div className="flex gap-2 mt-2">
                 {bestSellerProduct &&
+                  Array.isArray(bestSellerProduct.colors) &&
                   bestSellerProduct.colors?.map((color, index) => (
                     <button
                       key={index}
@@ -165,6 +168,7 @@ const BestSellerProduct = () => {
               <p className="text-gray-700">Size: </p>
               <div className="flex gap-2 mt-2">
                 {bestSellerProduct &&
+                  Array.isArray(bestSellerProduct.sizes) &&
                   bestSellerProduct.sizes?.map((size, index) => (
                     <button
                       key={index}

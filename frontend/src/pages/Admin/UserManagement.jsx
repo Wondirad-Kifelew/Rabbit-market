@@ -153,6 +153,7 @@ const UserManagement = () => {
           </thead>
           <tbody>
             {users.length > 0 ? (
+              Array.isArray(users) &&
               users.map((user, index) => (
                 <tr key={index} className="border-b hover:bg-gray-50 ">
                   <td className="p-4 font-medium text-gray-900 whitespace-nowrap">
