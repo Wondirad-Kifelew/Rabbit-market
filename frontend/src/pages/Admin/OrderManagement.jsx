@@ -14,7 +14,9 @@ const OrderManagement = () => {
         // update ui
         setOrders((prev) =>
           prev.map((order) =>
-            order._id === orderID ? { ...order, status } : order
+            Array.isArray(order) && order._id === orderID
+              ? { ...order, status }
+              : order
           )
         );
       }

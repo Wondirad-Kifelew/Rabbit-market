@@ -25,7 +25,11 @@ const ProductManagement = () => {
       try {
         const response = await axiosInstance.delete(`/api/products/${id}`);
         if (response) {
-          setProducts((prev) => prev.filter((product) => product._id !== id));
+          setProducts(
+            (prev) =>
+              Array.isArray(prev) &&
+              prev.filter((product) => product._id !== id)
+          );
         }
       } catch (error) {
         console.log("Error deleting products: ", error);

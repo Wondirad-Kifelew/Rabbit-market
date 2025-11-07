@@ -51,7 +51,9 @@ const FilterSideBar = () => {
       if (checked) {
         newFilters[name] = [...(newFilters[name] || []), value];
       } else {
-        newFilters[name] = newFilters[name].filter((item) => item !== value);
+        newFilters[name] = Array.isArray(newFilters[name])
+          ? newFilters[name].filter((item) => item !== value)
+          : [];
       }
     } else {
       newFilters[name] = value;

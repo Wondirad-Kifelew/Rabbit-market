@@ -42,7 +42,9 @@ const UserManagement = () => {
       });
       setUsers((prev) =>
         prev.map((user) =>
-          user._id === userId ? { ...user, role: newRole } : user
+          Array.isArray(user) && user._id === userId
+            ? { ...user, role: newRole }
+            : user
         )
       );
     } catch (error) {
@@ -57,7 +59,10 @@ const UserManagement = () => {
           `/api/admin/users/${userId}`
         );
         if (response) {
-          setUsers((prev) => prev.filter((user) => user._id !== userId));
+          setUsers(
+            (prev) =>
+              Array.isArray(prev) && prev.filter((user) => user._id !== userId)
+          );
         }
       } catch (error) {
         console.log("Error deleting user: ", error);

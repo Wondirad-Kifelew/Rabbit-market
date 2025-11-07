@@ -29,7 +29,9 @@ const Home = () => {
 
   useEffect(() => {
     if (products.length > 0) {
-      setFemaleProducts(products.filter((p) => p.gender === "Women"));
+      setFemaleProducts(
+        Array.isArray(products) && products.filter((p) => p.gender === "Women")
+      );
     }
   }, [products]);
 
